@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 const nunjucks = require('./utils/nunjucks.js');
 const env = require('./utils/env.js');
 
+// Modelos
+const models = require('./models/index.js');
+
 const detectPort = require('detect-port');
 
 // Rutas
@@ -17,6 +20,7 @@ const views = path.resolve(__dirname, '.', 'views/templates');
 
 async function startServer(port = process.env.PORT) {
     port = port || (await detectPort(3000));
+    await models.createTables();
 
     const app = express();
 
