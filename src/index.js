@@ -10,10 +10,11 @@ const env = require('./utils/env.js');
 const detectPort = require('detect-port');
 
 // Rutas
-const viewRouter = require('./views/index.js');
+const router = require('./router.js');
 
 const inTest = env.test;
-const views = path.resolve(__dirname, '.', 'views/templates');
+const viewsPath = path.resolve(__dirname, '.', 'views');
+const publicPath = path.resolve(__dirname, '.', 'public');
 
 async function startServer(port = process.env.PORT) {
     port = port || (await detectPort(3000));
@@ -25,17 +26,16 @@ async function startServer(port = process.env.PORT) {
     }
 
     app.use(bodyParser.json());
-    app.use(express.static(views));
-    app.set('views', views);
-    app.set('view engine', 'html');
+
+    app.use('/static', express.static(publicPath));
 
     nunjucks.init({
         express: app,
-        viewsPath: views,
+        viewsPath
     });
 
     // rutas de la vista
-    app.use('/', viewRouter);
+    app.use('/', router);
 
     return new Promise(function (resolve) {
         const server = app.listen(port, function () {
