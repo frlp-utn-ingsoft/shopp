@@ -24,8 +24,18 @@ const CartProduct = db.define(
 CartModel.Cart.belongsToMany(ProductModel.Product, { through: CartProduct });
 ProductModel.Product.belongsToMany(CartModel.Cart, { through: CartProduct });
 
+const increaseQuantity = (
+    cartId,
+    productId
+) => CartProduct.findOne({ where: { cartId: cartId, productId: productId } }).then((cartProduct) => {
+    if (cartProduct != null)
+        return cartProduct.update({quantity: cartProduct.quantity + 1})
+    return null
+})
+
 const CartProductModel = {
     CartProduct: CartProduct,
+    increaseQuantity: increaseQuantity
 };
 
 module.exports = CartProductModel;
