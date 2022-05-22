@@ -1,0 +1,8 @@
+:root {
+    --bs-body-font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-brand {
+    font-family: 'Macondo', 'Montserrat', sans-serif;
+    font-size: 2rem;
+}

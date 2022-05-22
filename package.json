@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js -e js,css,html",
     "test": "jest",
     "lint": "eslint .",
     "prettier": "prettier --write ."
