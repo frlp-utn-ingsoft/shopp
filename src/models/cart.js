@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-
 const db = require('../db.js');
+const CartProductModel = require('./cartProduct.js');
 
 /**
  * Modelo de carrito.
@@ -71,23 +71,13 @@ const findProductInCart = (
                 const productInCart = products.find((p) => p.id == product.id);
 
                 if (productInCart == undefined) {
-                    return cart.addProduct(product, { through: { quantity: 1 } }).then(() => {
-                        return cart.update({
-                            total: cart.total + product.price
-                        });
-                    });
-                } else {
-                    return cart.removeProduct(productInCart).then(() => {
-                        return cart.addProduct(
-                            productInCart,
-                            { through: { quantity: productInCart.CartProduct.quantity + 1 } }
-                        ).then(() =>
-                            cart.update({
-                                total: cart.total + productInCart.price
-                            })
-                        )
-                    });
-                }
+                    cart.addProduct(product, { through: { quantity: 1 } });
+                } else
+                    CartProductModel.increaseQuantity(cart.id, productInCart.id)
+
+                return cart.update({
+                    total: cart.total + product.price
+                })
             })
         }
         return null;
@@ -106,19 +96,22 @@ const findProductInCart = (
 ) => {
     return Cart.findOne({ where: { id: id } }).then((cart) => {
         if (cart != null) {
-            let productIndex = -1;
-            const productInCart = cart.products.find((p, index) => {
-                if (p.id == productId) {
-                    productIndex = index;
-                    return true;
-                }
-            });
+            return cart.getProducts().then((products) => {
+                const productInCart = products.find((p) => p.id == productId);
 
-            if (productIndex > -1)
-                return cart.update({
-                    products: cart.products.splice(productInCart, 1),
-                    total: cart.total - (productInCart.price * productInCart.CartProduct.quantity)
-                });
+                if (productInCart !== undefined) {
+                    if (productInCart.CartProduct.quantity === 1) {
+                        cart.removeProduct(productInCart);
+                    } else
+                        CartProductModel.decreaseQuantity(cart.id, productInCart.id)
+
+                    cart.update({
+                        total: cart.total - productInCart.price
+                    })
+                    return true
+                }
+                return false
+            });
         }
         return null;
     });
