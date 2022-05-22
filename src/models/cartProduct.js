@@ -1,6 +1,4 @@
 const Sequelize = require('sequelize');
-const CartModel = require('./cart.js');
-const ProductModel = require('./product.js');
 
 const db = require('../db.js');
 
@@ -20,9 +18,6 @@ const CartProduct = db.define(
     },
     { tableName: 'CartProduct' }
 );
-
-CartModel.Cart.belongsToMany(ProductModel.Product, { through: CartProduct });
-ProductModel.Product.belongsToMany(CartModel.Cart, { through: CartProduct });
 
 const increaseQuantity = (
     cartId,
