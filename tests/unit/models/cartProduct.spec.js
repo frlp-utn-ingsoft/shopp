@@ -1,12 +1,11 @@
+const Models = require('../../../src/models/index.js');
 const CartModel = require('../../../src/models/cart.js');
 const CartProductModel = require('../../../src/models/cartProduct.js');
 const ProductModel = require('../../../src/models/product.js');
 const ProductType = require('../../../src/models/productType.js');
 
 beforeEach(async () => {
-    await ProductModel.Product.sync({ force: true });
-    await CartModel.Cart.sync({ force: true });
-    await CartProductModel.CartProduct.sync({ force: true });
+    await Models.createTables()
 });
 
 test('Obtener la cantidad de un producto en un carrito inexistente', async () => {

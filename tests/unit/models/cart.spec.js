@@ -1,4 +1,4 @@
-const Models = require('../../../src/models/index.js')
+const Models = require('../../../src/models/index.js');
 const CartModel = require('../../../src/models/cart.js');
 const ProductModel = require('../../../src/models/product.js');
 const ProductType = require('../../../src/models/productType.js');
