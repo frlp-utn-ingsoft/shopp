@@ -88,3 +88,60 @@ test('Obtener la cantidad de un producto en un carrito cuando hay mas de uno', a
 
     expect(quantity).toBe(2);
 });
+
+test('Obtener la cantidad de un producto en un carrito luego de borrar el unico', async () => {
+    const productData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+    };
+
+    // Creamos el producto
+    const product = await ProductModel.create(productData);
+
+    // Creamos el carrito
+    const cart = await CartModel.create(product);
+
+    // Obtenemos la cantidad
+    const quantity = await CartProductModel.getQuantity(cart.id, product.id)
+
+    expect(quantity).toBe(1);
+
+    // Borramos el unico item
+    await CartModel.removeProductFromCart(cart.id, product.id);
+
+    // Obtenemos la cantidad actualizada
+    const quantityUpdated = await CartProductModel.getQuantity(cart.id, product.id)
+
+    expect(quantityUpdated).toBeNull();
+});
+
+test('Obtener la cantidad de un producto en un carrito luego de borrar un item', async () => {
+    const productData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+    };
+
+    // Creamos el producto
+    const product = await ProductModel.create(productData);
+
+    // Creamos el carrito
+    const cart = await CartModel.create(product);
+
+    // Agregamos item del mismo producto
+    await CartModel.addProductToCart(cart.id, product);
+
+    // Obtenemos la cantidad
+    const quantity = await CartProductModel.getQuantity(cart.id, product.id)
+
+    expect(quantity).toBe(2);
+
+    // Borramos uno de los dos items del mismo producto
+    await CartModel.removeProductFromCart(cart.id, product.id);
+
+    // Obtenemos la cantidad actualizada
+    const quantityUpdated = await CartProductModel.getQuantity(cart.id, product.id)
+
+    expect(quantityUpdated).toBe(1);
+});
