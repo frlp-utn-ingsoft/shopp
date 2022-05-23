@@ -19,26 +19,30 @@ const CartProduct = db.define(
     { tableName: 'CartProduct' }
 );
 
-const increaseQuantity = async (
-    cartId,
-    productId
-) => {
-    const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
+const increaseQuantity = async (cartId, productId) => {
+    const cartProduct = await CartProduct.findOne({
+        where: { cartId: cartId, productId: productId },
+    });
 
     if (cartProduct != null) {
-        return cartProduct.update({quantity: cartProduct.quantity + 1});
+        const cartProductUpdated = await cartProduct.update({
+            quantity: cartProduct.quantity + 1,
+        });
+        return cartProductUpdated.quantity;
     }
     return null;
 };
 
-const decreaseQuantity = async (
-    cartId,
-    productId
-) => {
-    const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
+const decreaseQuantity = async (cartId, productId) => {
+    const cartProduct = await CartProduct.findOne({
+        where: { cartId: cartId, productId: productId },
+    });
 
     if (cartProduct != null && cartProduct.quantity > 1) {
-        return cartProduct.update({quantity: cartProduct.quantity - 1});
+        const cartProductUpdated = await cartProduct.update({
+            quantity: cartProduct.quantity - 1,
+        });
+        return cartProductUpdated.quantity;
     }
     return null;
 };
@@ -49,11 +53,10 @@ const decreaseQuantity = async (
  * Parámetro productId: id del producto a buscar.
  *
  */
- const getQuantity = async (
-    cartId,
-    productId
-) => {
-    const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
+const getQuantity = async (cartId, productId) => {
+    const cartProduct = await CartProduct.findOne({
+        where: { cartId: cartId, productId: productId },
+    });
 
     if (cartProduct != null) {
         return cartProduct.quantity;
@@ -65,7 +68,7 @@ const CartProductModel = {
     CartProduct: CartProduct,
     increaseQuantity: increaseQuantity,
     decreaseQuantity: decreaseQuantity,
-    getQuantity: getQuantity
+    getQuantity: getQuantity,
 };
 
 module.exports = CartProductModel;
