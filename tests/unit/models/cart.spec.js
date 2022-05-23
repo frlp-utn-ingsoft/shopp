@@ -4,7 +4,7 @@ const ProductModel = require('../../../src/models/product.js');
 const ProductType = require('../../../src/models/productType.js');
 
 beforeEach(async () => {
-    await Models.createTables()
+    await Models.createTables();
 });
 
 test('Crear carrito vacío', async () => {
@@ -66,13 +66,18 @@ test('Agregar producto nuevo al carrito', async () => {
     expect(cart.total).toBe(productDataFirst.price);
 
     // Agregamos el segundo producto
-    const cartUpdated = await CartModel.addProductToCart(cart.id, productSecond);
+    const cartUpdated = await CartModel.addProductToCart(
+        cart.id,
+        productSecond
+    );
 
     // Obtenemos los productos actualizados
     const productsUpdated = await cartUpdated.getProducts();
 
     expect(productsUpdated.length).toBe(2);
-    expect(cartUpdated.total).toBe(productDataFirst.price + productDataSecond.price);
+    expect(cartUpdated.total).toBe(
+        productDataFirst.price + productDataSecond.price
+    );
 });
 
 test('Sumar item a producto del carrito', async () => {
@@ -187,13 +192,22 @@ test('Quitar producto de un carrito', async () => {
     await CartModel.addProductToCart(cart.id, productSecond);
 
     // Borramos el primer producto del carrito
-    const removed = await CartModel.removeProductFromCart(cart.id, productFirst.id);
+    const removed = await CartModel.removeProductFromCart(
+        cart.id,
+        productFirst.id
+    );
 
     // Buscamos el primer producto con su id
-    const searchProductFirst = await CartModel.findProductInCart(cart.id, productFirst.id);
+    const searchProductFirst = await CartModel.findProductInCart(
+        cart.id,
+        productFirst.id
+    );
 
     // Buscamos el segundo producto con su id
-    const searchProductSecond = await CartModel.findProductInCart(cart.id, productSecond.id);
+    const searchProductSecond = await CartModel.findProductInCart(
+        cart.id,
+        productSecond.id
+    );
 
     expect(removed).toBe(true);
     expect(searchProductFirst).toBeUndefined();

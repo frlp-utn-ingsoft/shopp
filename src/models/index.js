@@ -6,9 +6,9 @@ CartModel.Cart.belongsToMany(ProductModel.Product, { through: CartProductModel.C
 ProductModel.Product.belongsToMany(CartModel.Cart, { through: CartProductModel.CartProduct });
 
 async function createTables() {
-    await ProductModel.Product.sync()
-    await CartModel.Cart.sync()
-    await CartProductModel.CartProduct.sync()
+    await ProductModel.Product.sync();
+    await CartModel.Cart.sync();
+    await CartProductModel.CartProduct.sync();
 }
 
 module.exports = {

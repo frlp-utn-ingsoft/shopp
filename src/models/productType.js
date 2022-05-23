@@ -3,7 +3,7 @@ const ELECTRONICS = 'electronics';
 const HOME = 'home';
 
 module.exports = {
-	ELECTRONICS,
-	HOME,
-	types: [ELECTRONICS, HOME]
+    ELECTRONICS,
+    HOME,
+    types: [ELECTRONICS, HOME],
 };

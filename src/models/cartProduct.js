@@ -25,8 +25,9 @@ const increaseQuantity = async (
 ) => {
     const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
 
-    if (cartProduct != null)
+    if (cartProduct != null) {
         return cartProduct.update({quantity: cartProduct.quantity + 1});
+    }
     return null;
 };
 
@@ -36,8 +37,9 @@ const decreaseQuantity = async (
 ) => {
     const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
 
-    if (cartProduct != null && cartProduct.quantity > 1)
+    if (cartProduct != null && cartProduct.quantity > 1) {
         return cartProduct.update({quantity: cartProduct.quantity - 1});
+    }
     return null;
 };
 
@@ -53,8 +55,9 @@ const decreaseQuantity = async (
 ) => {
     const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
 
-    if (cartProduct != null)
+    if (cartProduct != null) {
         return cartProduct.quantity;
+    }
     return null;
 };
 

@@ -75,11 +75,7 @@ const createProduct = ({
  */
 const updateProduct = async (
     id,
-    {
-        name = '',
-        price = 0.0,
-        type = ProductType.HOME,
-    } = {}
+    { name = '', price = 0.0, type = ProductType.HOME } = {}
 ) => {
     const product = await Product.findOne({ where: { id: id } });
 

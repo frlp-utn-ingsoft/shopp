@@ -14,7 +14,7 @@ const Cart = db.define(
         total: {
             type: Sequelize.NUMBER,
             allowNull: false,
-        }
+        },
     },
     { tableName: 'Cart' }
 );
@@ -24,9 +24,7 @@ const Cart = db.define(
  * Parámetro data: JSON con el producto inicial.
  *
  */
- const createCart = async (
-    product
-) => {
+const createCart = async (product) => {
     let total = product != null ? product.price : 0.0;
 
     const cart = await Cart.create({ total: total });
@@ -44,10 +42,7 @@ const Cart = db.define(
  * Parámetro productId: id del producto a buscar.
  *
  */
-const findProductInCart = async (
-    id,
-    productId
-) => {
+const findProductInCart = async (id, productId) => {
     const cart = await Cart.findOne({ where: { id: id } });
     const products = await cart.getProducts();
 
@@ -60,10 +55,7 @@ const findProductInCart = async (
  * Parámetro data: JSON con los atributos del producto a agregar.
  *
  */
- const addProductToCart = async (
-    id,
-    product
-) => {
+const addProductToCart = async (id, product) => {
     const cart = await Cart.findOne({ where: { id: id } });
 
     if (cart != null) {
@@ -72,11 +64,12 @@ const findProductInCart = async (
 
         if (productInCart == undefined) {
             await cart.addProduct(product, { through: { quantity: 1 } });
-        } else
+        } else {
             await CartProductModel.increaseQuantity(cart.id, productInCart.id);
+        }
 
         return cart.update({
-            total: cart.total + product.price
+            total: cart.total + product.price,
         });
     }
     return null;
@@ -88,10 +81,7 @@ const findProductInCart = async (
  * Parámetro productId: id del producto a borrar.
  *
  */
- const removeProductFromCart = async (
-    id,
-    productId
-) => {
+const removeProductFromCart = async (id, productId) => {
     const cart = await Cart.findOne({ where: { id: id } });
 
     if (cart != null) {
@@ -101,11 +91,15 @@ const findProductInCart = async (
         if (productInCart !== undefined) {
             if (productInCart.CartProduct.quantity === 1) {
                 await cart.removeProduct(productInCart);
-            } else
-                await CartProductModel.decreaseQuantity(cart.id, productInCart.id);
+            } else {
+                await CartProductModel.decreaseQuantity(
+                    cart.id,
+                    productInCart.id
+                );
+            }
 
             await cart.update({
-                total: cart.total - productInCart.price
+                total: cart.total - productInCart.price,
             });
             return true;
         }
@@ -119,7 +113,7 @@ const CartModel = {
     create: createCart,
     findProductInCart: findProductInCart,
     addProductToCart: addProductToCart,
-    removeProductFromCart: removeProductFromCart
+    removeProductFromCart: removeProductFromCart,
 };
 
 module.exports = CartModel;
