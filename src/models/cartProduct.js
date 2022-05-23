@@ -37,10 +37,28 @@ const decreaseQuantity = (
     return null
 })
 
+/**
+ * Obtiene la cantidad del mismo producto dentro de un carrito.
+ * Parámetro id: id a buscar en la base de datos.
+ * Parámetro productId: id del producto a buscar.
+ *
+ */
+ const getQuantity = (
+    cartId,
+    productId
+) => {
+    return CartProduct.findOne({ where: { cartId: cartId, productId: productId } }).then((cartProduct) => {
+        if (cartProduct != null)
+            return cartProduct.quantity;
+        return null;
+    })
+}
+
 const CartProductModel = {
     CartProduct: CartProduct,
     increaseQuantity: increaseQuantity,
-    decreaseQuantity: decreaseQuantity
+    decreaseQuantity: decreaseQuantity,
+    getQuantity: getQuantity
 };
 
 module.exports = CartProductModel;
