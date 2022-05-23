@@ -73,7 +73,7 @@ const createProduct = ({
  * Parámetro data: JSON con los atributos a crear.
  *
  */
-const updateProduct = (
+const updateProduct = async (
     id,
     {
         name = '',
@@ -81,12 +81,12 @@ const updateProduct = (
         type = ProductType.HOME,
     } = {}
 ) => {
-    return Product.findOne({ where: { id: id } }).then((product) => {
-        if (product != null) {
-            return product.update({ name, price, type });
-        }
-        return null;
-    });
+    const product = await Product.findOne({ where: { id: id } });
+
+    if (product != null) {
+        return product.update({ name, price, type });
+    }
+    return null;
 };
 
 /**
@@ -94,13 +94,13 @@ const updateProduct = (
  * Parámetro id: id a buscar en la base de datos.
  *
  */
-const deleteProduct = (id) => {
-    return Product.findOne({ where: { id: id } }).then((product) => {
-        if (product != null) {
-            return product.destroy();
-        }
-        return null;
-    });
+const deleteProduct = async (id) => {
+    const product = await Product.findOne({ where: { id: id } });
+
+    if (product != null) {
+        return product.destroy();
+    }
+    return null;
 };
 
 const ProductModel = {

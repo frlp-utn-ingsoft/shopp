@@ -19,23 +19,27 @@ const CartProduct = db.define(
     { tableName: 'CartProduct' }
 );
 
-const increaseQuantity = (
+const increaseQuantity = async (
     cartId,
     productId
-) => CartProduct.findOne({ where: { cartId: cartId, productId: productId } }).then((cartProduct) => {
-    if (cartProduct != null)
-        return cartProduct.update({quantity: cartProduct.quantity + 1})
-    return null
-})
+) => {
+    const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
 
-const decreaseQuantity = (
+    if (cartProduct != null)
+        return cartProduct.update({quantity: cartProduct.quantity + 1});
+    return null;
+};
+
+const decreaseQuantity = async (
     cartId,
     productId
-) => CartProduct.findOne({ where: { cartId: cartId, productId: productId } }).then((cartProduct) => {
+) => {
+    const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
+
     if (cartProduct != null && cartProduct.quantity > 1)
-        return cartProduct.update({quantity: cartProduct.quantity - 1})
-    return null
-})
+        return cartProduct.update({quantity: cartProduct.quantity - 1});
+    return null;
+};
 
 /**
  * Obtiene la cantidad del mismo producto dentro de un carrito.
@@ -43,16 +47,16 @@ const decreaseQuantity = (
  * Parámetro productId: id del producto a buscar.
  *
  */
- const getQuantity = (
+ const getQuantity = async (
     cartId,
     productId
 ) => {
-    return CartProduct.findOne({ where: { cartId: cartId, productId: productId } }).then((cartProduct) => {
-        if (cartProduct != null)
-            return cartProduct.quantity;
-        return null;
-    })
-}
+    const cartProduct = await CartProduct.findOne({ where: { cartId: cartId, productId: productId } });
+
+    if (cartProduct != null)
+        return cartProduct.quantity;
+    return null;
+};
 
 const CartProductModel = {
     CartProduct: CartProduct,

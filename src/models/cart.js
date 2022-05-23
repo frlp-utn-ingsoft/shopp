@@ -24,18 +24,18 @@ const Cart = db.define(
  * Parámetro data: JSON con el producto inicial.
  *
  */
- const createCart = (
+ const createCart = async (
     product
 ) => {
-    let total = product != null ? product.price : 0.0
+    let total = product != null ? product.price : 0.0;
 
-    return Cart.create({ total: total }).then((cart) => {
-        if (product != null) {
-            cart.addProduct(product, { through: { quantity: 1 } });
-            return Cart.findOne({ where: { id: cart.id } });
-        }
-        return cart;
-    });
+    const cart = await Cart.create({ total: total });
+
+    if (product != null) {
+        await cart.addProduct(product, { through: { quantity: 1 } });
+        return Cart.findOne({ where: { id: cart.id } });
+    }
+    return cart;
 };
 
 /**
@@ -44,16 +44,15 @@ const Cart = db.define(
  * Parámetro productId: id del producto a buscar.
  *
  */
-const findProductInCart = (
+const findProductInCart = async (
     id,
     productId
 ) => {
-    return Cart.findOne({ where: { id: id } }).then((cart) => {
-        return cart.getProducts().then((products) => {
-            return products.find((p) => p.id == productId);
-        });
-    })
-}
+    const cart = await Cart.findOne({ where: { id: id } });
+    const products = await cart.getProducts();
+
+    return products.find((p) => p.id == productId);
+};
 
 /**
  * Agrega un producto a un carrito ya existente.
@@ -61,27 +60,26 @@ const findProductInCart = (
  * Parámetro data: JSON con los atributos del producto a agregar.
  *
  */
- const addProductToCart = (
+ const addProductToCart = async (
     id,
     product
 ) => {
-    return Cart.findOne({ where: { id: id } }).then((cart) => {
-        if (cart != null) {
-            return cart.getProducts().then((products) => {
-                const productInCart = products.find((p) => p.id == product.id);
+    const cart = await Cart.findOne({ where: { id: id } });
 
-                if (productInCart == undefined) {
-                    cart.addProduct(product, { through: { quantity: 1 } });
-                } else
-                    CartProductModel.increaseQuantity(cart.id, productInCart.id)
+    if (cart != null) {
+        const products = await cart.getProducts();
+        const productInCart = products.find((p) => p.id == product.id);
 
-                return cart.update({
-                    total: cart.total + product.price
-                })
-            })
-        }
-        return null;
-    });
+        if (productInCart == undefined) {
+            await cart.addProduct(product, { through: { quantity: 1 } });
+        } else
+            await CartProductModel.increaseQuantity(cart.id, productInCart.id);
+
+        return cart.update({
+            total: cart.total + product.price
+        });
+    }
+    return null;
 };
 
 /**
@@ -90,31 +88,30 @@ const findProductInCart = (
  * Parámetro productId: id del producto a borrar.
  *
  */
- const removeProductFromCart = (
+ const removeProductFromCart = async (
     id,
     productId
 ) => {
-    return Cart.findOne({ where: { id: id } }).then((cart) => {
-        if (cart != null) {
-            return cart.getProducts().then((products) => {
-                const productInCart = products.find((p) => p.id == productId);
+    const cart = await Cart.findOne({ where: { id: id } });
 
-                if (productInCart !== undefined) {
-                    if (productInCart.CartProduct.quantity === 1) {
-                        cart.removeProduct(productInCart);
-                    } else
-                        CartProductModel.decreaseQuantity(cart.id, productInCart.id)
+    if (cart != null) {
+        const products = await cart.getProducts();
+        const productInCart = products.find((p) => p.id == productId);
 
-                    cart.update({
-                        total: cart.total - productInCart.price
-                    })
-                    return true
-                }
-                return false
+        if (productInCart !== undefined) {
+            if (productInCart.CartProduct.quantity === 1) {
+                await cart.removeProduct(productInCart);
+            } else
+                await CartProductModel.decreaseQuantity(cart.id, productInCart.id);
+
+            await cart.update({
+                total: cart.total - productInCart.price
             });
+            return true;
         }
-        return null;
-    });
+        return false;
+    }
+    return null;
 };
 
 const CartModel = {
