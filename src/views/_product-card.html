@@ -15,6 +15,20 @@
             </p>
             <p class="fs-3">$ {{ product.price }}</p>
         </div>
+
+        <div class="flex-grow-1 d-flex align-items-center justify-content-end">
+            <!-- Si tiene definido CartProduct quiere decir que estamos en el carrito -->
+            {% if (not product.CartProduct ) %}
+                <form action="/cart" method="POST">
+                    <input type="text" class="d-none" name="productid" value="{{ product.id }}">
+                    <button type="submit" class="btn btn-outline-primary">Agregar a carrito</button>
+                </form>
+            {% else %}
+                <div class="product__quantity fs-4 bold">
+                    {{ product.CartProduct.quantity }} en carrito
+                </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endmacro %}

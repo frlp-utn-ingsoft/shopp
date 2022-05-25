@@ -1,0 +1,17 @@
+{% import "_product-card.html" as productCard %}
+{% extends "_base.html" %}
+
+{% block main %}
+<div class="row">
+    <div class="col mt-4 vstack gap-2">
+        {% for product in products %}
+            {{ productCard.productCard(product) }}
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col fs-3 mt-4 text-end">
+        Total $ {{ cart.total }}
+    </div>
+</div>
+{% endblock %}
