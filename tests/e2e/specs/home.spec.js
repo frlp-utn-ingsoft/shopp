@@ -4,7 +4,7 @@ describe('Home Test', () => {
         cy.task('seed');
     });
 
-    it('Deberia tener de titulo Shoop', () => {
+    it('Deberia tener de titulo Shopp', () => {
         cy.visit('/');
         cy.title().should('eq', 'Shopp');
     });
