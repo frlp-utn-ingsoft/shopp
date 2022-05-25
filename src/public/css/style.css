@@ -2,6 +2,10 @@
     --bs-body-font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    background-color: var(--bs-gray-100);
+}
+
 .navbar-brand {
     font-family: 'Macondo', 'Montserrat', sans-serif;
     font-size: 2rem;
