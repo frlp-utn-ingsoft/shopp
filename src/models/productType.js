@@ -1,9 +1,9 @@
-const ELECTRONICS = 'electronics'
+const ELECTRONICS = 'electronics';
 
-const HOME = 'home'
+const HOME = 'home';
 
 module.exports = {
-	ELECTRONICS,
-	HOME,
-	types: [ELECTRONICS, HOME]
-}
+    ELECTRONICS,
+    HOME,
+    types: [ELECTRONICS, HOME],
+};

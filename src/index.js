@@ -36,7 +36,7 @@ async function startServer(port = process.env.PORT) {
 
     nunjucks.init({
         express: app,
-        viewsPath
+        viewsPath,
     });
 
     // rutas de la vista
@@ -50,7 +50,7 @@ async function startServer(port = process.env.PORT) {
 
             const originalClose = server.close.bind(server);
             server.close = async () => {
-                return new Promise(resolveClose => {
+                return new Promise((resolveClose) => {
                     originalClose(resolveClose);
                 });
             };
