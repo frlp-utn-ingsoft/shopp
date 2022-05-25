@@ -12,7 +12,7 @@ describe('Home Test', () => {
     it('Deberia mostrar 10 productos', () => {
         cy.visit('/');
 
-        cy.get('.product').should('have.length', 12);
+        cy.get('.product').should('have.length', 10);
     });
 
     it('El primer producto deberia ser "Placard"', () => {
@@ -22,5 +22,18 @@ describe('Home Test', () => {
             'have.text',
             'Placard'
         );
+    });
+
+    it('Deberia mostrarse el páginador si es necesario', () => {
+        cy.visit('/');
+
+        cy.get('.pagination').should('be.visible')
+    });
+
+    it('Deberia poder paginar', () => {
+        cy.visit('/');
+
+        cy.get('.pagination__next').click()
+        cy.get('.product').should('have.length', 2);
     });
 });

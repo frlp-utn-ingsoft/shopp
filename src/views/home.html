@@ -1,5 +1,6 @@
 <!-- prettier-ignore -->
 {% import "_product-card.html" as productCard %}
+{% import "_pagination.html" as _pagination %}
 {% extends "_base.html" %}
 
 {% block main %}
@@ -9,5 +10,10 @@
             {{ productCard.productCard(product) }}
         {% endfor %}
     </div>
+</div>
+<div class="row mt-4">
+    {{
+        _pagination.pagination(pagination.totalPages, pagination.currentPage)
+    }}
 </div>
 {% endblock %}

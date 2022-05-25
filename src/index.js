@@ -29,6 +29,7 @@ async function startServer(port = process.env.PORT) {
         app.use(morgan('dev'));
     }
 
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
     app.use('/static', express.static(publicPath));

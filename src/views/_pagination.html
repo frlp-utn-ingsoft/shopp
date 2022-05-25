@@ -1,0 +1,19 @@
+{% macro pagination(totalPages, currentPage) %}
+    <nav class="pagination fs-5">
+        <ul class="hstack gap-3">
+            <li class="pagination__prev">
+                <a href="?page={{ currentPage - 1 }}">< Anterior</a>
+            </li>
+
+            <li>
+                <span class="current" aria-current="page">
+                    {{ currentPage }}
+                </span> de {{ totalPages }}
+            </li>
+
+            <li class="pagination__next">
+                <a href="?page={{ currentPage + 1 }}">Siguiente ></a>
+            </li>
+        </ul>
+    </nav>
+{% endmacro %}
