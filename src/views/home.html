@@ -1,7 +1,19 @@
 <!-- prettier-ignore -->
+{% import "_product-card.html" as productCard %}
+{% import "_pagination.html" as _pagination %}
 {% extends "_base.html" %}
 
 {% block main %}
-<div class="columns">
+<div class="row">
+    <div class="col mt-4 vstack gap-2">
+        {% for product in products %}
+            {{ productCard.productCard(product) }}
+        {% endfor %}
+    </div>
+</div>
+<div class="row mt-4">
+    {{
+        _pagination.pagination(pagination.totalPages, pagination.currentPage)
+    }}
 </div>
 {% endblock %}

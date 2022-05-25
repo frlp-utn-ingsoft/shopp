@@ -2,7 +2,26 @@
     --bs-body-font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    background-color: var(--bs-gray-100);
+}
+
 .navbar-brand {
     font-family: 'Macondo', 'Montserrat', sans-serif;
     font-size: 2rem;
+}
+
+.pagination {
+    justify-content: center;
+}
+
+.pagination .current {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--bs-gray-200);
+}
+
+.pagination ul {
+    list-style: none;
+    display: flex;
 }
