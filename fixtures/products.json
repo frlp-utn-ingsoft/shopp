@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Placard",
+        "price": 50000.0,
+        "type": "home"
+    },
+    {
+        "name": "Mesa",
+        "price": 25000.0,
+        "type": "home"
+    },
+    {
+        "name": "Silla",
+        "price": 5000.0,
+        "type": "home"
+    },
+    {
+        "name": "Mesa de Luz",
+        "price": 8000.0,
+        "type": "home"
+    },
+    {
+        "name": "Sillon",
+        "price": 85000.0,
+        "type": "home"
+    },
+    {
+        "name": "Cama",
+        "price": 45000.0,
+        "type": "home"
+    },
+    {
+        "name": "Rack TV",
+        "price": 25000.0,
+        "type": "home"
+    },
+    {
+        "name": "TV",
+        "price": 55000.0,
+        "type": "electronics"
+    },
+    {
+        "name": "PS4",
+        "price": 75000.0,
+        "type": "electronics"
+    },
+    {
+        "name": "PS5",
+        "price": 175000.0,
+        "type": "electronics"
+    },
+    {
+        "name": "Barra de sonido",
+        "price": 35000.0,
+        "type": "electronics"
+    },
+    {
+        "name": "Laptop",
+        "price": 350000.0,
+        "type": "electronics"
+    }
+]
