@@ -77,7 +77,7 @@ const updateProduct = async (
     id,
     { name = '', price = 0.0, type = ProductType.HOME } = {}
 ) => {
-    const product = await Product.findOne({ where: { id: id } });
+    const product = await findById(id);
 
     if (product != null) {
         return product.update({ name, price, type });
@@ -91,7 +91,7 @@ const updateProduct = async (
  *
  */
 const deleteProduct = async (id) => {
-    const product = await Product.findOne({ where: { id: id } });
+    const product = await findById(id);
 
     if (product != null) {
         return product.destroy();
@@ -99,8 +99,19 @@ const deleteProduct = async (id) => {
     return null;
 };
 
+/**
+ * Busca un producto por id
+ *
+ * @param {Number} id del producto buscado
+ * @returns Product
+ */
+function findById(id) {
+    return Product.findOne({ where: { id: id } });
+}
+
 const ProductModel = {
     Product: Product,
+    findById: findById,
     getAll: getAllProducts,
     create: createProduct,
     update: updateProduct,
