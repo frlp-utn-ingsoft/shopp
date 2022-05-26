@@ -2,9 +2,13 @@
  * @jest-environment jsdom
  */
 
-const utils = require('../../ui-utils.js')
+const utils = require('../../ui-utils.js');
 
-const { getByText, getByAltText } = require('@testing-library/dom');
+const {
+    getByText,
+    queryByText,
+    getByAltText,
+} = require('@testing-library/dom');
 require('@testing-library/jest-dom');
 
 function renderProduct(product) {
@@ -61,5 +65,34 @@ describe('Tarjeta de producto', () => {
         expect(
             getByAltText(document.body, `foto de un ${product.name}`)
         ).toBeVisible();
+    });
+
+    test('Deberia tener boton para agregar al carrito', async () => {
+        const product = {
+            name: 'Placard',
+            type: 'home',
+            price: 100,
+        };
+        const html = renderProduct(product);
+        document.body.innerHTML = html;
+
+        const btn = getByText(document.body, 'Agregar a carrito');
+        expect(btn).toBeVisible();
+    });
+
+    test('Deberia mostrar la cantidad de items en carrito si el producto esta dentro de un carrito', async () => {
+        const product = {
+            name: 'Placard',
+            type: 'home',
+            price: 100,
+            CartProduct: {
+                quantity: 2,
+            },
+        };
+        const html = renderProduct(product);
+        document.body.innerHTML = html;
+
+        expect(queryByText(document.body, 'Agregar a carrito')).toBeNull();
+        expect(getByText(document.body, '2 en carrito')).toBeVisible();
     });
 });
