@@ -31,7 +31,7 @@ const createCart = async (product) => {
 
     if (product != null) {
         await cart.addProduct(product, { through: { quantity: 1 } });
-        return Cart.findOne({ where: { id: cart.id } });
+        return findById(cart.id);
     }
     return cart;
 };
@@ -43,7 +43,7 @@ const createCart = async (product) => {
  *
  */
 const findProductInCart = async (id, productId) => {
-    const cart = await Cart.findOne({ where: { id: id } });
+    const cart = await findById(id);
     const products = await cart.getProducts();
 
     return products.find((p) => p.id == productId);
@@ -56,7 +56,7 @@ const findProductInCart = async (id, productId) => {
  *
  */
 const addProductToCart = async (id, product) => {
-    const cart = await Cart.findOne({ where: { id: id } });
+    const cart = await findById(id);
 
     if (cart != null) {
         const products = await cart.getProducts();
@@ -82,7 +82,7 @@ const addProductToCart = async (id, product) => {
  *
  */
 const removeProductFromCart = async (id, productId) => {
-    const cart = await Cart.findOne({ where: { id: id } });
+    const cart = await findById(id);
 
     if (cart != null) {
         const products = await cart.getProducts();
@@ -108,8 +108,19 @@ const removeProductFromCart = async (id, productId) => {
     return null;
 };
 
+/**
+ * Busca un `Cart` por id
+ *
+ * @param {Number} id del `Cart` buscado
+ * @returns Cart
+ */
+function findById(id) {
+    return Cart.findOne({ where: { id: id } });
+}
+
 const CartModel = {
     Cart: Cart,
+    findById: findById,
     create: createCart,
     findProductInCart: findProductInCart,
     addProductToCart: addProductToCart,
