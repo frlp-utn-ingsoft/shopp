@@ -23,7 +23,9 @@ jobs:
             - run: npm run test:e2e:run
     metrics:
         runs-on: ubuntu-latest
-        branches: [pre, pro]
+        if:
+            - github.ref == 'refs/heads/pro'
+            - github.ref == 'refs/heads/pre'
 
         strategy:
             matrix:
