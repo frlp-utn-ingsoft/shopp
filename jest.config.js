@@ -4,4 +4,9 @@ module.exports = {
     transform: {
         '^.+\\.m?js$': 'babel-jest',
     },
+    coverageThreshold: {
+        global: {
+            lines: 85,
+        },
+    },
 };
