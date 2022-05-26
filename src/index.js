@@ -14,6 +14,7 @@ const detectPort = require('detect-port');
 
 // Rutas
 const router = require('./router.js');
+const lhroute = require('./.lhroute.js');
 
 const inTest = env.test;
 const viewsPath = path.resolve(__dirname, '.', 'views');
@@ -42,10 +43,14 @@ async function startServer(port = process.env.PORT) {
     // rutas de la vista
     app.use('/', router);
 
+    if (process.env.NODE_ENV !== 'production') {
+        app.use('/lh', lhroute);
+    }
+
     return new Promise(function (resolve) {
         const server = app.listen(port, function () {
             if (!inTest) {
-                console.log(`Server started on http://localhost:${port}`);
+                console.log(`Server listen on http://localhost:${port}`);
             }
 
             const originalClose = server.close.bind(server);

@@ -4,30 +4,35 @@ Aplicación utilizada en la cursada 2022 de Ingenieria de Software. UTN-FRLP
 
 ## Dependencias
 
-- node > v16
-- express > v4
+-   node > v16
+-   express > v4
 
 ## Instalar dependencias
 
-```npm install```
+`npm install`
 
 ## Iniciar la base de datos con productos
 
-```npm run db:fixtures```
+`npm run db:fixtures`
 
 ## Iniciar la app en modo desarrollo
 
-```npm run dev```
+`npm run dev`
 
 ## Iniciar la app en modo producción
 
-```npm start```
+`npm start`
 
 ## Correr los test unitarios y de integracion
 
-```npm run test```
+`npm run test`
 
 ## Correr los test e2e
 
-- Correrlos en headless mode: `npm run test:e2e:run`
-- Correrlos en con UI: `npm run test:e2e:run`
+-   Correrlos en headless mode: `npm run test:e2e:run`
+-   Correrlos en con UI: `npm run test:e2e:run`
+
+## Correr comandos de métricas
+
+-   Coverage `npm run test:coverage`
+-   Lighthouse: `npm run lighthouse`
