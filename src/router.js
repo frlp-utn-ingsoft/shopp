@@ -10,6 +10,8 @@ router.get('/', async function (req, res) {
 
     const { rows, count } = await ProductModel.getAll(pageSize, skip);
 
+    console.log(rows);
+
     res.render('home.html', {
         products: rows,
         pagination: {
@@ -38,6 +40,12 @@ router.get('/cart', async function (req, res) {
         products,
         cart,
     });
+});
+
+router.get('/discount', async function (req, res) {
+    const productsWithDiscount = await ProductModel.getAllDiscount();
+
+    res.render('discount.html', { products: productsWithDiscount });
 });
 
 module.exports = router;
