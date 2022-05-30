@@ -10,8 +10,6 @@ router.get('/', async function (req, res) {
 
     const { rows, count } = await ProductModel.getAll(pageSize, skip);
 
-    console.log(rows);
-
     res.render('home.html', {
         products: rows,
         pagination: {
