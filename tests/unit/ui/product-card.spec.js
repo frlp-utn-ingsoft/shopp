@@ -8,6 +8,8 @@ const {
     getByText,
     queryByText,
     getByAltText,
+    getByTestId,
+    TestingLibraryElementError
 } = require('@testing-library/dom');
 require('@testing-library/jest-dom');
 
@@ -94,5 +96,36 @@ describe('Tarjeta de producto', () => {
 
         expect(queryByText(document.body, 'Agregar a carrito')).toBeNull();
         expect(getByText(document.body, '2 en carrito')).toBeVisible();
+    });
+
+    test('Deberia mostrar el descuento si el producto tiene un descuento', async () => {
+        const product = {
+            name: 'Placard',
+            type: 'home',
+            price: 100,
+            discount: 5
+        };
+
+        const html = renderProduct(product);
+        document.body.innerHTML = html;
+
+        const el = getByTestId(document.body, 'discount');
+        expect(el).not.toBeNull();
+        expect(el.innerHTML).toBe('5 %')
+    });
+
+    test('Deberia no mostrar el descuento si el producto no tiene un descuento', async () => {
+        const product = {
+            name: 'Placard',
+            type: 'home',
+            price: 100
+        };
+
+        const html = renderProduct(product);
+        document.body.innerHTML = html;
+
+        expect(() => {
+            getByTestId(document.body, 'discount');
+        }).toThrowError(TestingLibraryElementError)
     });
 });
