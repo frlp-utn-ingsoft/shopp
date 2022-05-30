@@ -26,6 +26,10 @@ const Product = db.define(
             allowNull: false,
             values: ProductType.types,
         },
+        discount: {
+            type: Sequelize.NUMBER,
+            allowNull: false,
+        },
     },
     { tableName: 'Product' }
 );
@@ -55,6 +59,23 @@ const getAllProducts = (limit, skip, type) => {
 };
 
 /**
+ * Obtener todos los productos con descuento de la base de datos.
+ *
+ */
+const getDiscountProducts = () => {
+    return Product.findAll({
+        attributes: {
+            exclude: ['createdAt', 'updatedAt'],
+        },
+        where: {
+            discount: {
+                [Sequelize.Op.gt]: 0,
+            },
+        },
+    });
+};
+
+/**
  * Crear un producto nuevo.
  * Parámetro data: JSON con los atributos a crear.
  *
@@ -63,8 +84,9 @@ const createProduct = ({
     name = '',
     price = 0.0,
     type = ProductType.HOME,
+    discount = 0.0,
 } = {}) => {
-    return Product.create({ name, price, type });
+    return Product.create({ name, price, type, discount });
 };
 
 /**
@@ -75,12 +97,12 @@ const createProduct = ({
  */
 const updateProduct = async (
     id,
-    { name = '', price = 0.0, type = ProductType.HOME } = {}
+    { name = '', price = 0.0, type = ProductType.HOME, discount = 0.0 } = {}
 ) => {
     const product = await findById(id);
 
     if (product != null) {
-        return product.update({ name, price, type });
+        return product.update({ name, price, type, discount });
     }
     return null;
 };
@@ -113,6 +135,7 @@ const ProductModel = {
     Product: Product,
     findById: findById,
     getAll: getAllProducts,
+    getAllDiscount: getDiscountProducts,
     create: createProduct,
     update: updateProduct,
     delete: deleteProduct,

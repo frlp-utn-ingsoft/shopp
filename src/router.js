@@ -40,4 +40,10 @@ router.get('/cart', async function (req, res) {
     });
 });
 
+router.get('/discount', async function (req, res) {
+    const productsWithDiscount = await ProductModel.getAllDiscount();
+
+    res.render('discount.html', { products: productsWithDiscount });
+});
+
 module.exports = router;

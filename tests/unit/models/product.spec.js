@@ -291,3 +291,60 @@ test('Eliminar producto inexistente', async () => {
     // El producto debería seguir existiendo en la lista
     expect(products.rows.length).toBe(1);
 });
+
+test('Listar productos con descuento', async () => {
+    const productData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+        discount: 10,
+    };
+
+    // Creamos el producto
+    await ProductModel.create(productData);
+
+    const products = await ProductModel.getAllDiscount();
+
+    expect(products.length).toBe(1);
+    expect(products[0].discount).toBeGreaterThan(0);
+});
+
+test('Listar productos con descuento cuando no hay ninguno', async () => {
+    const productData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+    };
+
+    // Creamos el producto
+    await ProductModel.create(productData);
+
+    const products = await ProductModel.getAllDiscount();
+
+    expect(products.length).toBe(0);
+});
+
+test('Listar productos con descuento cuando tengo 1 sin descuento', async () => {
+    const productFirstData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+        discount: 10,
+    };
+
+    const productSecondData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Mesa',
+    };
+
+    // Creamos los productos
+    await ProductModel.create(productFirstData);
+    await ProductModel.create(productSecondData);
+
+    const products = await ProductModel.getAllDiscount();
+
+    expect(products.length).toBe(1);
+    expect(products[0].discount).toBeGreaterThan(0);
+    expect(products[0].name).toBe(productFirstData.name);
+});
