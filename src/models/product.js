@@ -26,6 +26,11 @@ const Product = db.define(
             allowNull: false,
             values: ProductType.types,
         },
+        description: {
+            type: Sequelize.STRING,
+            allowNull: false
+        }
+    
     },
     { tableName: 'Product' }
 );
@@ -66,8 +71,9 @@ const createProduct = ({
     name = '',
     price = 0.0,
     type = ProductType.HOME,
+    description = ''
 } = {}) => {
-    return Product.create({ name, price, type });
+    return Product.create({ name, price, type, description });
 };
 
 /**
@@ -78,7 +84,7 @@ const createProduct = ({
  */
 const updateProduct = async (
     id,
-    { name = '', price = 0.0, type = ProductType.HOME } = {}
+    { name = '', price = 0.0, type = ProductType.HOME, description = ''} = {}
 ) => {
     const product = await findById(id);
 
