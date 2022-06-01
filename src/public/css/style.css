@@ -11,6 +11,14 @@ body {
     font-size: 2rem;
 }
 
+.footer {
+    position: relative;
+    left:0px;
+    bottom:0;
+    height:0px;
+    width:100%;
+ }
+
 .pagination {
     justify-content: center;
 }
