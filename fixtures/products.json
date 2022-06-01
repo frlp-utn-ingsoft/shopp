@@ -1,72 +1,84 @@
 [
     {
         "discount": 5,
+        "description": "Placard de primera calidad",
         "name": "Placard",
         "price": 50000,
         "type": "home"
     },
     {
         "discount": 10,
+        "description": "Mesa de primera calidad",
         "name": "Mesa",
         "price": 25000,
         "type": "home"
     },
     {
         "discount": 0,
+        "description": "SIlla de primera calidad",
         "name": "Silla",
         "price": 5000,
         "type": "home"
     },
     {
         "discount": 0,
+        "description": "Mesa de Luz de primera calidad",
         "name": "Mesa de Luz",
         "price": 8000,
         "type": "home"
     },
     {
         "discount": 0,
+        "description": "Sillon de primera calidad",
         "name": "Sillon",
         "price": 85000,
         "type": "home"
     },
     {
         "discount": 0,
+        "description": "Cama de primera calidad",
         "name": "Cama",
         "price": 45000,
         "type": "home"
     },
     {
         "discount": 0,
+        "description": "Rack TV de primera calidad",
         "name": "Rack TV",
         "price": 25000,
         "type": "home"
     },
     {
         "discount": 0,
+        "description": "TV de primera calidad",
         "name": "TV",
         "price": 55000,
         "type": "electronics"
     },
     {
         "discount": 0,
+        "description": "PS4 de primera calidad",
         "name": "PS4",
         "price": 75000,
         "type": "electronics"
     },
     {
         "discount": 0,
+        "description": "PS5 de primera calidad",
         "name": "PS5",
         "price": 175000,
         "type": "electronics"
     },
     {
         "discount": 0,
+        "description": "Barra de Sonido de primera calidad",
         "name": "Barra de sonido",
         "price": 35000,
         "type": "electronics"
     },
     {
         "discount": 0,
+        "description": "Laptop de primera calidad",
         "name": "Laptop",
         "price": 350000,
         "type": "electronics"

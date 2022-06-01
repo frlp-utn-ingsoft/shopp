@@ -348,3 +348,22 @@ test('Listar productos con descuento cuando tengo 1 sin descuento', async () => 
     expect(products[0].discount).toBeGreaterThan(0);
     expect(products[0].name).toBe(productFirstData.name);
 });
+
+test('Los productos deben tener descripcion', async () => {
+    const productData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+        discount: 10,
+        description: 'Placard de alta calidad.'
+    };
+
+    await ProductModel.create(productData);
+
+    const products = await ProductModel.getAll();
+
+    products.forEach(x => {
+        expect(x.description).not.toBe('')
+        expect(x.description).not.toBeNull()
+    })
+});
