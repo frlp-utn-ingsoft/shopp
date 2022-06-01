@@ -362,8 +362,11 @@ test('Los productos deben tener descripcion', async () => {
 
     const products = await ProductModel.getAll();
 
-    products.forEach(x => {
+
+    products.rows.forEach(x => {
         expect(x.description).not.toBe('')
         expect(x.description).not.toBeNull()
     })
+
+
 });
