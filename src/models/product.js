@@ -55,6 +55,13 @@ const getAllProducts = (limit, skip, type) => {
     return Product.findAndCountAll({
         limit: limit,
         offset: skip,
+        /**
+ * Lista ordenada alfabeticamente
+ *
+ */
+        order: [
+            ['name', 'ASC'],
+        ],
         attributes: {
             exclude: ['createdAt', 'updatedAt'],
         },
