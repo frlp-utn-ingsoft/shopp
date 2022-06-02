@@ -85,4 +85,16 @@ describe('Paginación', () => {
         expect(prevLink).toBeVisible();
         expect(prevLink.getAttribute('href')).toBe(`?page=${pagination.currentPage - 1}`);
     });
+
+    test('No debería mostrar el botón Anterior en página 1', async() => {
+        const pagination = {
+            totalPages: 10,
+            currentPage: 1
+        }
+        const html = renderPagination(pagination);
+        const anteriorHTML = getByText(document.body, '< Anterior');
+
+        document.body.innerHTML = html;
+        expect(anteriorHTML).not.toBeVisible();
+    })
 });
