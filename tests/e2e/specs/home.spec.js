@@ -49,4 +49,10 @@ describe('Home Test', () => {
         cy.get('footer').should('be.visible');
     });
 
+    it('Deberia estar oculto el boton de SIGUIENTE en la ultima pagina', () => {
+        cy.visit('/?page=2');
+
+        cy.get('.pagination__next').should('not.exist')
+    });
+
 });
