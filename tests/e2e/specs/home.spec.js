@@ -44,4 +44,9 @@ describe('Home Test', () => {
             .should('contain.text', '5 %');
     });
 
+    it('Deberia tener el footer', () => {
+        cy.visit('/');
+        cy.get('footer').should('be.visible');
+    });
+
 });

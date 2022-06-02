@@ -25,3 +25,39 @@ body {
     list-style: none;
     display: flex;
 }
+
+.footer-data-shopp{
+    width: 100%;
+    background-color:#5397fd;
+}
+
+.footer-data-shopp .container-body{
+    padding: 1rem;
+}
+
+.footer-data-shopp .grupo{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.footer-data-shopp .box1{
+    font-family: 'Macondo', 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: aliceblue;
+}
+
+.footer-data-shopp .box2{
+    font-family: 'Macondo', 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: aliceblue;
+}
+
+.footer-data-shopp .box3{
+    font-family: 'Macondo', 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: aliceblue;
+}
