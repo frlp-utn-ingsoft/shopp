@@ -30,6 +30,19 @@ router.post('/cart', async function (req, res) {
     res.redirect('/cart');
 });
 
+router.post('/remove', async function (req, res) {
+    const productID = +req.body.productid;
+    const product = await ProductModel.findById(productID);
+
+    if (product != null) {
+        await CartModel.removeProductFromCart(1, productID);
+    }
+
+    res.redirect('/cart');
+})
+
+
+
 router.get('/cart', async function (req, res) {
     const cart = await CartModel.findById(1);
     const products = await cart.getProducts();

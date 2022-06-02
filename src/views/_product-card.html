@@ -1,13 +1,8 @@
 {% macro productCard(product) %}
 <div class="product card">
     <div class="card-body d-flex flex-row">
-        <img
-            src="https://via.placeholder.com/150"
-            alt="foto de un {{ product.name }}"
-            width="150px"
-            class="rounded"
-            loading="async"
-        />
+        <img src="https://via.placeholder.com/150" alt="foto de un {{ product.name }}" width="150px" class="rounded"
+            loading="async" />
         <div class="ms-3">
             <h5 class="card-title mb-0">{{ product.name }}</h5>
             <p class="card-text">
@@ -19,16 +14,38 @@
         <div class="flex-grow-1 d-flex align-items-center justify-content-end">
             <!-- Si tiene definido CartProduct quiere decir que estamos en el carrito -->
             {% if (not product.CartProduct ) %}
-                <form action="/cart" method="POST">
-                    <input type="text" class="d-none" name="productid" value="{{ product.id }}">
-                    <button type="submit" class="btn btn-outline-primary">Agregar a carrito</button>
-                </form>
+            <form action="/cart" method="POST">
+                <input type="text" class="d-none" name="productid" value="{{ product.id }}">
+                <button type="submit" class="btn btn-outline-primary">Agregar a carrito</button>
+            </form>
             {% else %}
-                <div class="product__quantity fs-4 bold">
-                    {{ product.CartProduct.quantity }} en carrito
+
+
+            <div class="product__quantity fs-4 bold">
+                <div class="col-sm-20 ">
+                    <div class="mb-3 row">
+                        {{ product.CartProduct.quantity }} en carrito
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-5 ">
+                            <form action="/remove" method="POST">
+                                <input type="text" class="d-none" name="productid" value="{{ product.id }}">
+                                <button type="submit"
+                                    class="btn btn-outline-danger fa-solid fa-cart-arrow-down"></button>
+                            </form>
+                        </div>
+                        <div class="col-sm-5 ">
+                            <form action="/cart" method="POST">
+                                <input type="text" class="d-none" name="productid" value="{{ product.id }}">
+                                <button type="submit" class="btn btn-outline-primary fa-solid fa-cart-plus"></button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {% endif %}
                 </div>
-            {% endif %}
+            </div>
         </div>
-    </div>
-</div>
-{% endmacro %}
+        {% endmacro %}
