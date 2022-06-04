@@ -3,72 +3,84 @@
         "discount": 5,
         "name": "Placard",
         "price": 50000,
-        "type": "home"
+        "type": "home",
+        "description": "4 cajones, 12 box de guardado. Perfilería de aluminio ya incluido tanto en puertas como en riel superior e inferior"
     },
     {
         "discount": 10,
         "name": "Mesa",
         "price": 25000,
-        "type": "home"
+        "type": "home",
+        "description": "Patas y estructura realizadas en madera maciza. Base laqueada con poliuretano"
     },
     {
         "discount": 0,
         "name": "Silla",
         "price": 5000,
-        "type": "home"
+        "type": "home",
+        "description":"Estrcuctura de PVC y madera sin asiento acolchado"
     },
     {
         "discount": 0,
         "name": "Mesa de Luz",
         "price": 8000,
-        "type": "home"
+        "type": "home",
+        "description":"Cuenta con 1 cajón y una puerta volcable. Gabinete revestido interiormente (los cajones no)"
     },
     {
         "discount": 0,
         "name": "Sillon",
         "price": 85000,
-        "type": "home"
+        "type": "home",
+        "description":"Sillon rinconero de madera saligna encastrada y encolada"
     },
     {
         "discount": 0,
         "name": "Cama",
         "price": 45000,
-        "type": "home"
+        "type": "home",
+        "description":"Apta para colchon de 2 plazas. Respaldo con 5 estantes"
     },
     {
         "discount": 0,
         "name": "Rack TV",
         "price": 25000,
-        "type": "home"
+        "type": "home",
+        "description":"Mueble organizador con dos módulos. Listo para armar. Hecho con melamina de alta resistencia"
     },
     {
         "discount": 0,
         "name": "TV",
         "price": 55000,
-        "type": "electronics"
+        "type": "electronics",
+        "description":"Smart TV con resolucion 4K y sonido envolvente"
     },
     {
         "discount": 0,
         "name": "PS4",
         "price": 75000,
-        "type": "electronics"
+        "type": "electronics",
+        "description":"Slim 500GB con 1 juego a elección"
     },
     {
         "discount": 0,
         "name": "PS5",
         "price": 175000,
-        "type": "electronics"
+        "type": "electronics",
+        "description":"Gran rendimiento con una interfaz de usuario más rápida y fácil de navegar"
     },
     {
         "discount": 0,
         "name": "Barra de sonido",
         "price": 35000,
-        "type": "electronics"
+        "type": "electronics",
+        "description":"Posee una potencia de 70 watts y bluetooth con un alcance de 10 metros"
     },
     {
         "discount": 0,
         "name": "Laptop",
         "price": 350000,
-        "type": "electronics"
+        "type": "electronics",
+        "description":"Disco sólido de 500 GB, Intel core i7 de 4 núcleos, placa de video gtx 1050 ti"
     }
 ]
