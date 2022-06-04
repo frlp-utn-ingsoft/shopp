@@ -9,9 +9,13 @@
         {% endfor %}
     </div>
 </div>
+{% if (products.length == 0)%}
+<h1 class="m-5 text-center">El carrito está vacio</h1>
+{% else %}
 <div class="row">
     <div class="col fs-3 mt-4 text-end">
         Total $ {{ cart.total }}
     </div>
 </div>
+{% endif %}
 {% endblock %}
