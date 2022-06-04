@@ -24,6 +24,14 @@ describe('Home Test', () => {
         );
     });
     
+    it('El ultimo producto deberia ser "Silla"', () => {
+        cy.visit('/');
+
+        cy.get('.product:last-child .card-title').should(
+            'have.text',
+            'Silla'
+        );
+    });
 
     it('Deberia mostrarse el páginador si es necesario', () => {
         cy.visit('/');
