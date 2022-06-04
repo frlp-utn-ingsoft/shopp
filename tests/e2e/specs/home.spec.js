@@ -55,4 +55,14 @@ describe('Home Test', () => {
         cy.get('.pagination__next').should('not.exist')
     });
 
+    it('Deberia existir el boton de ELIMINAR DEL CARRITO', () => {
+
+        cy.visit('/')
+        cy.get('.agregar').first().click()
+
+        cy.visit('/cart');
+
+        cy.get('.eliminarCarrito').should('exist')
+    });
+
 });
