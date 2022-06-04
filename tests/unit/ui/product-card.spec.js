@@ -41,7 +41,7 @@ describe('Tarjeta de producto', () => {
         });
         document.body.innerHTML = html;
 
-        expect(getByText(document.body, 'home')).toBeVisible();
+        expect(getByText(document.body, 'Hogar')).toBeVisible();
     });
  
  
