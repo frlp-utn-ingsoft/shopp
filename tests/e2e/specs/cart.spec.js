@@ -35,12 +35,12 @@ describe('Cart', () => {
 
         cy.get('.product:first-child .product__quantity').should(
             'contain.text',
-            '2 en carrito'
+            '1 en carrito'
         );
 
         cy.get('.product:nth-child(2) .product__quantity').should(
             'contain.text',
-            '1 en carrito'
+            '2 en carrito'
         );
     });
 
