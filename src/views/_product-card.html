@@ -11,7 +11,13 @@
         <div class="ms-3">
             <h5 class="card-title mb-0">{{ product.name }}</h5>
             <p class="card-text">
-                <small class="text-muted">{{ product.type }}</small>
+                <small class="text-muted">
+                    {% if product.type == 'home' %}
+                    Hogar
+                    {% elif product.type == 'electronics' %}
+                    Electrónica
+                    {% endif %}
+                </small>
             </p>
             <p class="fs-3">$ {{ product.price }}</p>
 
