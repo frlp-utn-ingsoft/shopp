@@ -44,6 +44,40 @@ describe('Cart', () => {
         );
     });
 
+    it('Deberia poder eliminar un item del carrito', () => {
+        cy.visit('/');
+
+        cy.get('.product:first-child [type=submit]').click();
+
+        cy.get('.navbar-brand').click();
+
+        cy.get('.product:first-child [type=submit]').click();
+
+        cy.get('.navbar-brand').click();
+
+        cy.get('.product:first-child [type=submit]').click();
+
+        cy.get('.product .product__quantity').should(
+            'contain.text',
+            '3 en carrito'
+        );
+
+        cy.get('.eliminarProducto').click();
+
+        cy.get('.product .product__quantity').should(
+            'contain.text',
+            '2 en carrito'
+        );
+
+        cy.get('.eliminarProducto').click();
+
+        cy.get('.product .product__quantity').should(
+            'contain.text',
+            '1 en carrito'
+        );
+        
+    });
+
     it('Deberia mostrar 2 productos con descuento en la pagina de descuento', () => {
         cy.visit('/discount');
         cy.get('.product').should('have.length', 2)
