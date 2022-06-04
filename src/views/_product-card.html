@@ -28,6 +28,11 @@
                     <input type="text" class="d-none" name="productid" value="{{ product.id }}">
                     <button type="submit" class="btn btn-outline-primary">Agregar a carrito</button>
                 </form>
+            {% elif (product.CartProduct ) %}
+            <form action="/removeFromCart" method="POST">
+                <input type="text" class="d-none" name="productid" value="{{ product.id }}">
+                <button type="submit" class="btn btn-outline-primary">Eliminar del carrito</button>
+            </form>
             {% else %}
                 <div class="product__quantity fs-4 bold">
                     {{ product.CartProduct.quantity }} en carrito
