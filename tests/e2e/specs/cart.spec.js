@@ -76,6 +76,12 @@ describe('Cart', () => {
             '1 en carrito'
         );
         
+        cy.get('.eliminarProducto').click();
+
+        cy.get('.carritoVacio').should(
+            'contain.text',
+            'El carrito está vacio'
+        );
     });
 
     it('Deberia mostrar un mensaje si no hay ningun item en el carrito', () => {
