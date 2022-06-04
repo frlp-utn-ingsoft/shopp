@@ -33,17 +33,6 @@ describe('Tarjeta de producto', () => {
         expect(getByText(document.body, 'Placard')).toBeVisible();
     });
 
-    test('Deberia tener el tipo del producto', async () => {
-        const html = renderProduct({
-            name: 'Placard',
-            type: 'home',
-            price: 100,
-        });
-        document.body.innerHTML = html;
-
-        expect(getByText(document.body, 'Hogar')).toBeVisible();
-    });
-
     test('Deberia tener el precio del producto', async () => {
         const html = renderProduct({
             name: 'Placard',
@@ -127,5 +116,16 @@ describe('Tarjeta de producto', () => {
         expect(() => {
             getByTestId(document.body, 'discount');
         }).toThrowError(TestingLibraryElementError)
+    });
+
+    test('Deberia tener el tipo del producto', async () => {
+        const html = renderProduct({
+            name: 'Barra de sonido',
+            type: 'electronics',
+            price: 100,
+        });
+        document.body.innerHTML = html;
+
+        expect(getByText(document.body, 'Electrónica')).toBeVisible();
     });
 });
