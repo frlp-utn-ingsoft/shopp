@@ -4,7 +4,7 @@
 
 const utils = require('../../ui-utils.js')
 
-const { getByText } = require('@testing-library/dom');
+const { getByText, TestingLibraryElementError } = require('@testing-library/dom');
 require('@testing-library/jest-dom');
 
 function renderPagination(pagination) {
@@ -84,5 +84,21 @@ describe('Paginación', () => {
 
         expect(prevLink).toBeVisible();
         expect(prevLink.getAttribute('href')).toBe(`?page=${pagination.currentPage - 1}`);
+    });
+
+    test('No debería mostrar el botón Siguiente en la última página', async() => {
+        const pagination = {
+            totalPages: 10,
+            currentPage: 10
+        }
+
+        const html = renderPagination(pagination);
+
+        document.body.innerHTML = html;
+
+        expect(() => {
+            getByText(document.body, 'Siguiente >');
+        }).toThrowError(TestingLibraryElementError)
+       
     });
 });
