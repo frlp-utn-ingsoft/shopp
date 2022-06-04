@@ -33,6 +33,18 @@ describe('Tarjeta de producto', () => {
         expect(getByText(document.body, 'Placard')).toBeVisible();
     });
 
+    test('Deberia tener el tipo del producto', async () => {
+        const html = renderProduct({
+            name: 'Placard',
+            type: 'home',
+            price: 100,
+        });
+        document.body.innerHTML = html;
+
+        expect(getByText(document.body, 'home')).toBeVisible();
+    });
+ 
+ 
     test('Deberia tener el precio del producto', async () => {
         const html = renderProduct({
             name: 'Placard',
@@ -118,7 +130,7 @@ describe('Tarjeta de producto', () => {
         }).toThrowError(TestingLibraryElementError)
     });
 
-    test('Deberia tener el tipo del producto', async () => {
+    test('Deberia tener el tipo del producto en español', async () => {
         const html = renderProduct({
             name: 'Barra de sonido',
             type: 'electronics',
