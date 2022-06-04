@@ -54,6 +54,9 @@ const getAllProducts = (limit, skip, type) => {
         attributes: {
             exclude: ['createdAt', 'updatedAt'],
         },
+        order: [
+            ['name', 'ASC'],  
+        ],
         where: where,
     });
 };

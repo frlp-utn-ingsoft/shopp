@@ -15,12 +15,21 @@ describe('Home Test', () => {
         cy.get('.product').should('have.length', 10);
     });
 
-    it('El primer producto deberia ser "Placard"', () => {
+    it('El primer producto deberia ser "Barra de sonido"', () => {
         cy.visit('/');
 
         cy.get('.product:first-child .card-title').should(
             'have.text',
-            'Placard'
+            'Barra de sonido'
+        );
+    });
+    
+    it('El ultimo producto deberia ser "Silla"', () => {
+        cy.visit('/');
+
+        cy.get('.product:last-child .card-title').should(
+            'have.text',
+            'Silla'
         );
     });
 
@@ -40,8 +49,8 @@ describe('Home Test', () => {
     it('Deberia mostrar el primer producto con descuento', () => {
         cy.visit('/');
 
-        cy.get(':nth-child(1) > .card-body > .ms-3 > [data-testid="discount"]')
-            .should('contain.text', '5 %');
+        cy.get(':nth-child(4) > .card-body > .ms-3 > [data-testid="discount"]')
+            .should('contain.text', '10 %');
     });
 
 });
