@@ -78,6 +78,15 @@ describe('Cart', () => {
         
     });
 
+    it('Deberia mostrar un mensaje si no hay ningun item en el carrito', () => {
+        cy.visit('/cart');
+
+        cy.get('.carritoVacio').should(
+            'contain.text',
+            'El carrito está vacio'
+        );
+    });
+
     it('Deberia mostrar 2 productos con descuento en la pagina de descuento', () => {
         cy.visit('/discount');
         cy.get('.product').should('have.length', 2)
