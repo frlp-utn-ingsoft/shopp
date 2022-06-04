@@ -17,7 +17,7 @@
             
             <small class="text-muted">{{ product.description }}</small>
             {% if (product.discount > 0) %}
-                <p class="small" data-testid="discount">{{ product.discount }} %</p>
+                <p class="small discount" data-testid="discount">{{ product.discount }} %</p>
             {% endif %}
         </div>
 
@@ -26,12 +26,12 @@
             {% if (not product.CartProduct ) %}
                 <form action="/cart" method="POST">
                     <input type="text" class="d-none" name="productid" value="{{ product.id }}">
-                    <button type="submit" class="btn btn-outline-primary">Agregar a carrito</button>
+                    <button type="submit" class="btn btn-outline-primary agregar">Agregar a carrito</button>
                 </form>
             {% elif (product.CartProduct ) %}
             <form action="/removeFromCart" method="POST">
                 <input type="text" class="d-none" name="productid" value="{{ product.id }}">
-                <button type="submit" class="btn btn-outline-primary">Eliminar del carrito</button>
+                <button type="submit" class="btn btn-outline-primary eliminarCarrito">Eliminar del carrito</button>
             </form>
             {% else %}
                 <div class="product__quantity fs-4 bold">
