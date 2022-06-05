@@ -44,4 +44,9 @@ describe('Home Test', () => {
             .should('contain.text', '5 %');
     });
 
+    it('Debería existir el footer con la información de contacto de Shopp', () => {
+        cy.visit('/');
+        cy.get('footer').should('be.visible');
+    });
+
 });
