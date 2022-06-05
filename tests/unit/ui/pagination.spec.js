@@ -4,7 +4,7 @@
 
 const utils = require('../../ui-utils.js')
 
-const { getByText } = require('@testing-library/dom');
+const { getByText, queryByText } = require('@testing-library/dom');
 require('@testing-library/jest-dom');
 
 function renderPagination(pagination) {
@@ -84,5 +84,46 @@ describe('Paginación', () => {
 
         expect(prevLink).toBeVisible();
         expect(prevLink.getAttribute('href')).toBe(`?page=${pagination.currentPage - 1}`);
+    });
+
+    test('No debería mostrarse el botón anterior en la primera página', async () => {
+        const pagination = {
+            totalPages: 10,
+            currentPage: 1
+        }
+        const html = renderPagination(pagination);
+
+        document.body.innerHTML = html;
+        const prevLink = queryByText(document.body, '< Anterior');
+
+        expect(prevLink).toBeNull();
+    });
+
+    test('No debería mostrarse el botón siguiente en la última página', async () => {
+        const pagination = {
+            totalPages: 10,
+            currentPage: 10
+        }
+        const html = renderPagination(pagination);
+
+        document.body.innerHTML = html;
+        const nextLink = queryByText(document.body, 'Siguiente >');
+
+        expect(nextLink).toBeNull();
+    });
+
+    test('No deberían mostrarse los botones de paginación si hay una única página', async () => {
+        const pagination = {
+            totalPages: 1,
+            currentPage: 1
+        }
+        const html = renderPagination(pagination);
+
+        document.body.innerHTML = html;
+        const prevLink = queryByText(document.body, '< Anterior');
+        const nextLink = queryByText(document.body, 'Siguiente >');
+
+        expect(prevLink).toBeNull();
+        expect(nextLink).toBeNull();
     });
 });
