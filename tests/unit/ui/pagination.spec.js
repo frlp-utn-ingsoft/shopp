@@ -4,7 +4,7 @@
 
 const utils = require('../../ui-utils.js')
 
-const { getByText } = require('@testing-library/dom');
+const { getByText, TestingLibraryElementError } = require('@testing-library/dom');
 require('@testing-library/jest-dom');
 
 function renderPagination(pagination) {
@@ -85,4 +85,19 @@ describe('Paginación', () => {
         expect(prevLink).toBeVisible();
         expect(prevLink.getAttribute('href')).toBe(`?page=${pagination.currentPage - 1}`);
     });
+});
+
+test('No se debería mostrar el botón "Anterior" en la primer página', async() => {
+    const pagination = {
+        totalPages: 10,
+        currentPage: 1
+    }
+
+    const html = renderPagination(pagination);
+
+    document.body.innerHTML = html;
+
+    expect(() => {
+        getByText(document.body, '< Anterior');
+    }).toThrowError(TestingLibraryElementError)
 });
