@@ -86,6 +86,22 @@ describe('Paginación', () => {
         expect(prevLink.getAttribute('href')).toBe(`?page=${pagination.currentPage - 1}`);
     });
 
+    test('No debería mostrar el botón Anterior en la primera página', async() => {
+        const pagination = {
+            totalPages: 10,
+            currentPage: 1
+        }
+
+        const html = renderPagination(pagination);
+
+        document.body.innerHTML = html;
+
+        expect(() => {
+            getByText(document.body, '< Anterior');
+        }).toThrowError(TestingLibraryElementError)
+
+    });
+    
     test('No debería mostrar el botón Siguiente en la última página', async() => {
         const pagination = {
             totalPages: 10,
