@@ -9,9 +9,14 @@
         {% endfor %}
     </div>
 </div>
+{% if (products.length == 0)%}
+<img class="w-25 mt-5 mx-auto d-block" src="https://i.imgur.com/yRM2xxZ.png">
+<h1 class="m-5 text-center carritoVacio">El carrito está vacio</h1>
+{% else %}
 <div class="row">
     <div class="col fs-3 mt-4 text-end">
         Total $ {{ cart.total }}
     </div>
 </div>
+{% endif %}
 {% endblock %}

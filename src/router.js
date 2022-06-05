@@ -40,6 +40,17 @@ router.get('/cart', async function (req, res) {
     });
 });
 
+router.post('/eliminarCarrito', async function (req, res) {
+    const productID = +req.body.productid;
+    const product = await ProductModel.findById(productID);
+
+    if (product != null) {
+        await CartModel.removeProductFromCart(1, productID);
+    }
+
+    res.redirect('/cart');
+});
+
 router.get('/discount', async function (req, res) {
     const productsWithDiscount = await ProductModel.getAllDiscount();
 

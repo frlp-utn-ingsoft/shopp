@@ -44,6 +44,55 @@ describe('Cart', () => {
         );
     });
 
+    it('Deberia poder eliminar un item del carrito', () => {
+        cy.visit('/');
+
+        cy.get('.product:first-child [type=submit]').click();
+
+        cy.get('.navbar-brand').click();
+
+        cy.get('.product:first-child [type=submit]').click();
+
+        cy.get('.navbar-brand').click();
+
+        cy.get('.product:first-child [type=submit]').click();
+
+        cy.get('.product .product__quantity').should(
+            'contain.text',
+            '3 en carrito'
+        );
+
+        cy.get('.eliminarProducto').click();
+
+        cy.get('.product .product__quantity').should(
+            'contain.text',
+            '2 en carrito'
+        );
+
+        cy.get('.eliminarProducto').click();
+
+        cy.get('.product .product__quantity').should(
+            'contain.text',
+            '1 en carrito'
+        );
+        
+        cy.get('.eliminarProducto').click();
+
+        cy.get('.carritoVacio').should(
+            'contain.text',
+            'El carrito está vacio'
+        );
+    });
+
+    it('Deberia mostrar un mensaje si no hay ningun item en el carrito', () => {
+        cy.visit('/cart');
+
+        cy.get('.carritoVacio').should(
+            'contain.text',
+            'El carrito está vacio'
+        );
+    });
+
     it('Deberia mostrar 2 productos con descuento en la pagina de descuento', () => {
         cy.visit('/discount');
         cy.get('.product').should('have.length', 2)
