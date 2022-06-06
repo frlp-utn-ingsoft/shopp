@@ -6,12 +6,17 @@
     <div class="col mt-4 vstack gap-2">
         {% for product in products %}
             {{ productCard.productCard(product) }}
-        {% endfor %}
+        {% endfor %}    
     </div>
 </div>
+
+{% if (products.length == 0)%}
+    <h2 style="color: red; text-align: center;">No posee productos en el carritos</h2>
+{% else %}
 <div class="row">
     <div class="col fs-3 mt-4 text-end">
         Total $ {{ cart.total }}
     </div>
 </div>
+{% endif %}
 {% endblock %}
