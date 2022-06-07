@@ -2,9 +2,7 @@
 {% import "_product-card.html" as productCard %}
 {% import "_pagination.html" as _pagination %}
 {% extends "_base.html" %}
-{% macro c(x, y) %}
-{{ caller() }}: {{ x + y }}
-{% endmacro%}
+
 {% block main %}
 <div class="row">
     <div class="col mt-4 vstack gap-2">
