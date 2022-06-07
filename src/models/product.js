@@ -26,6 +26,10 @@ const Product = db.define(
             allowNull: false,
             values: ProductType.types,
         },
+        description : {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
         discount: {
             type: Sequelize.NUMBER,
             allowNull: false,
