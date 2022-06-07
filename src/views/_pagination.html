@@ -14,7 +14,9 @@
             </li>
 
             <li class="pagination__next">
+                {% if currentPage !== totalPages %}
                 <a href="?page={{ currentPage + 1 }}">Siguiente ></a>
+                {% endif %}
             </li>
         </ul>
     </nav>
