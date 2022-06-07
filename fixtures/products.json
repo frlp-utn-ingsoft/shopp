@@ -3,72 +3,84 @@
         "discount": 5,
         "name": "Placard",
         "price": 50000,
+        "description":"Placard de algarrobo de 1.90 x 0.30 x 2.5",
         "type": "home"
     },
     {
         "discount": 10,
         "name": "Mesa",
         "price": 25000,
+        "description":"Mesa de pino de 1.60 x 0.80",
         "type": "home"
     },
     {
         "discount": 0,
         "name": "Silla",
         "price": 5000,
+        "description":"Silla de pino 'confy', ideal para el estudiante",
         "type": "home"
     },
     {
         "discount": 0,
         "name": "Mesa de Luz",
         "price": 8000,
+        "description":"Mesa de pino de 1.60 x 0.80",
         "type": "home"
     },
     {
         "discount": 0,
         "name": "Sillon",
         "price": 85000,
+        "description":"Sillon sofa 2 cuerpos",
         "type": "home"
     },
     {
         "discount": 0,
         "name": "Cama",
         "price": 45000,
+        "description":"Cama dos plazas king",
         "type": "home"
     },
     {
         "discount": 0,
         "name": "Rack TV",
         "price": 25000,
+        "description":"Rack TV nordico ",
         "type": "home"
     },
     {
         "discount": 0,
         "name": "TV",
         "price": 55000,
+        "description":"Smart TV 45 pulgadas",
         "type": "electronics"
     },
     {
         "discount": 0,
         "name": "PS4",
         "price": 75000,
+        "description":"Sony PS4 edición Destiny - Incluye destiny 2 de regalo",
         "type": "electronics"
     },
     {
         "discount": 0,
         "name": "PS5",
         "price": 175000,
+        "description":"Nueva PS5 con 3 juegos de regalo. Edición física",
         "type": "electronics"
     },
     {
         "discount": 0,
         "name": "Barra de sonido",
         "price": 35000,
+        "description": "Barra de sonido Skull Candy con bluetoth de última generación",
         "type": "electronics"
     },
     {
         "discount": 0,
         "name": "Laptop",
         "price": 350000,
+        "description": "Laptop MSI de 15.2 pulgadas, intel core I7, 16 GB de ram y placa de video Nvidia GTX 1660",
         "type": "electronics"
     }
 ]
