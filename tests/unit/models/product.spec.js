@@ -10,6 +10,7 @@ test('Crear producto', async () => {
         price: 50000.0,
         type: ProductType.HOME,
         name: 'Placard',
+        description:'test',    
     };
 
     // Creamos el producto
@@ -18,6 +19,7 @@ test('Crear producto', async () => {
     expect(product.price).toBe(productData.price);
     expect(product.type).toBe(productData.type);
     expect(product.name).toBe(productData.name);
+    expect(product.description).toBe(productData.description);
 });
 
 test('Crear producto sin tipo', async () => {
@@ -32,7 +34,7 @@ test('Crear producto sin tipo', async () => {
     expect(product.price).toBe(productData.price);
     expect(product.type).toBe(ProductType.HOME);
     expect(product.name).toBe(productData.name);
-});
+    });
 
 test('Listar productos sin resultados', async () => {
     const products = await ProductModel.getAll();
