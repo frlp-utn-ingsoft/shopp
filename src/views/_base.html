@@ -28,7 +28,7 @@
         <main class="container">
             {% block main %} {% endblock %}
         </main>
-
+        
         {% block js %} {% endblock %}
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -37,4 +37,7 @@
         </script>
         <script src="https://mozilla.github.io/nunjucks/files/nunjucks-slim.min.js"></script>
     </body>
+    <footer>
+        {% include "_footer.html" %}
+    </footer> 
 </html>

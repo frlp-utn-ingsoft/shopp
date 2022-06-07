@@ -43,5 +43,10 @@ describe('Home Test', () => {
         cy.get(':nth-child(1) > .card-body > .ms-3 > [data-testid="discount"]')
             .should('contain.text', '5 %');
     });
+    it('Deberia mostrar el footer en el home', () => {
+        cy.visit('/');
+
+        cy.get('footer > .navbar').should('be.visible');
+    });
 
 });
