@@ -38,12 +38,12 @@ describe('Cart', () => {
         cy.get('.product:nth-child(2) [type=submit]').click();
         cy.get('.product').should('have.length', 2);
 
-        cy.get('.product:first-child .product__quantity').should(
+        cy.get('.product:nth-child(2) .product__quantity').should(
             'contain.text',
             '2 en carrito'
         );
 
-        cy.get('.product:nth-child(2) .product__quantity').should(
+        cy.get('.product:first-child .product__quantity').should(
             'contain.text',
             '1 en carrito'
         );

@@ -55,6 +55,10 @@ const getAllProducts = (limit, skip, type) => {
             exclude: ['createdAt', 'updatedAt'],
         },
         where: where,
+        order: [
+            ['discount', 'DESC'],
+            ['name', 'ASC']
+        ],
     });
 };
 
