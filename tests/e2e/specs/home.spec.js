@@ -35,4 +35,10 @@ describe('Home Test', () => {
             .should('contain.text', '10 %');
     });
 
+
+    it('Deberia tener un footer', () => {
+        cy.visit('/');
+
+        cy.get('footer').should('exist')
+    });
 });
