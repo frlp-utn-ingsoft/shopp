@@ -14,6 +14,7 @@
                 <small class="text-muted">{{ product.type }}</small>
             </p>
             <p class="fs-3">$ {{ product.price }}</p>
+            <p class="fs-3">Descripcion: {{ product.description }}</p>
 
             {% if (product.discount > 0) %}
                 <p class="small" data-testid="discount">{{ product.discount }} %</p>
