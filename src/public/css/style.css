@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: var(--bs-gray-100);
+    background-color: rgb(0, 183, 255);
 }
 
 .navbar-brand {
@@ -18,7 +18,13 @@ body {
 .pagination .current {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: var(--bs-gray-200);
+    background: white;
+}
+
+.pagination .pagination__next {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: white;
 }
 
 .pagination ul {
