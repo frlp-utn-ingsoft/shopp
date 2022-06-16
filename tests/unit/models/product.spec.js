@@ -20,6 +20,21 @@ test('Crear producto', async () => {
     expect(product.name).toBe(productData.name);
 });
 
+test('Verificar que la descripción aparece al crear producto', async () => {
+    const productData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+        description: 'Nueva Descripción',
+    };
+
+    // Creamos el producto
+    const product = await ProductModel.create(productData);
+
+    expect(product.description).toBe(productData.description);
+
+});
+
 test('Crear producto sin tipo', async () => {
     const productData = {
         price: 1000.0,
