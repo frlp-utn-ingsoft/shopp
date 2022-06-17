@@ -49,16 +49,24 @@ footer{
 
 .box__footer h2{
     margin-bottom: 30px;
-    color: #343434;
+    color:black;
     font-weight: 700;
 }
 
 .box__footer p{
     margin-top: 10px;
-    color: #7a7a7a;
+    color: black;
     font-weight: 600;
 }
 
 .box__footer p:hover{
     opacity: 0.8;
+}
+
+p {
+    color: black;
+}
+
+.black {
+    color: black;
 }
