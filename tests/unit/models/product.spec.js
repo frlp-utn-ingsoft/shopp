@@ -185,6 +185,7 @@ test('Editar producto', async () => {
         price: 50000.0,
         type: ProductType.HOME,
         name: 'Placard',
+
     };
 
     // Creamos el producto
@@ -347,4 +348,21 @@ test('Listar productos con descuento cuando tengo 1 sin descuento', async () => 
     expect(products.length).toBe(1);
     expect(products[0].discount).toBeGreaterThan(0);
     expect(products[0].name).toBe(productFirstData.name);
+});
+
+test('Crear producto con su detalle', async () => {
+    const productData = {
+        price: 50000.0,
+        type: ProductType.HOME,
+        name: 'Placard',
+        detail:'Placard Ropero 6 Puertas 2 Cajones'
+    };
+
+    // Creamos el producto
+    const product = await ProductModel.create(productData);
+
+    expect(product.price).toBe(productData.price);
+    expect(product.type).toBe(productData.type);
+    expect(product.name).toBe(productData.name);
+    expect(product.detail).toBe(productData.detail);
 });

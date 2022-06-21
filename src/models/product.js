@@ -30,6 +30,10 @@ const Product = db.define(
             type: Sequelize.NUMBER,
             allowNull: false,
         },
+        detail: {
+            type: Sequelize.STRING,
+            allowNull: true,
+        },
     },
     { tableName: 'Product' }
 );
@@ -85,8 +89,9 @@ const createProduct = ({
     price = 0.0,
     type = ProductType.HOME,
     discount = 0.0,
+    detail= ''
 } = {}) => {
-    return Product.create({ name, price, type, discount });
+    return Product.create({ name, price, type, discount,detail });
 };
 
 /**

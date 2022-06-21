@@ -3,72 +3,84 @@
         "discount": 5,
         "name": "Placard",
         "price": 50000,
-        "type": "home"
+        "type": "home",
+        "detail": "Placard Ropero 6 Puertas 2 Cajones"
     },
     {
         "discount": 10,
         "name": "Mesa",
         "price": 25000,
-        "type": "home"
+        "type": "home",
+        "detail":"Mesa Comedor 120 Escandinava Nordica Madera"
     },
     {
         "discount": 0,
         "name": "Silla",
         "price": 5000,
-        "type": "home"
+        "type": "home",
+        "detail":"Silla de comedor"
     },
     {
         "discount": 0,
         "name": "Mesa de Luz",
         "price": 8000,
-        "type": "home"
+        "type": "home",
+        "detail":"Mesa De Luz 1 Cajon Moderna"
     },
     {
         "discount": 0,
         "name": "Sillon",
         "price": 85000,
-        "type": "home"
+        "type": "home",
+        "detail":"Sillón Esquinero"
     },
     {
         "discount": 0,
         "name": "Cama",
         "price": 45000,
-        "type": "home"
+        "type": "home",
+        "detail":"Cama Box Base Sommiers"
     },
     {
         "discount": 0,
         "name": "Rack TV",
         "price": 25000,
-        "type": "home"
+        "type": "home",
+        "detail":"Es de color blanco"
     },
     {
         "discount": 0,
         "name": "TV",
         "price": 55000,
-        "type": "electronics"
+        "type": "electronics",
+        "detail":"TV Oled 4k"
     },
     {
         "discount": 0,
         "name": "PS4",
         "price": 75000,
-        "type": "electronics"
+        "type": "electronics",
+        "detail":"PS4 con 1Tb de almacenamiento "
     },
     {
         "discount": 0,
         "name": "PS5",
         "price": 175000,
-        "type": "electronics"
+        "type": "electronics",
+        "detail":"PS5 con 1Tb de almacenamiento "
     },
     {
         "discount": 0,
         "name": "Barra de sonido",
         "price": 35000,
-        "type": "electronics"
+        "type": "electronics",
+        "detail":"Barra De Sonido Samsung"
     },
     {
         "discount": 0,
         "name": "Laptop",
         "price": 350000,
-        "type": "electronics"
+        "type": "electronics",
+        "detail":"Laptop i7 con 1Tb de almacenamiento SsdS "
     }
 ]

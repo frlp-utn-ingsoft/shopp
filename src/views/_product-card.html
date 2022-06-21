@@ -18,6 +18,9 @@
             {% if (product.discount > 0) %}
                 <p class="small" data-testid="discount">{{ product.discount }} %</p>
             {% endif %}
+            <p class="card-text">
+                <small class="text-muted">{{ product.detail }}</small>
+            </p>
         </div>
 
         <div class="flex-grow-1 d-flex align-items-center justify-content-end">
