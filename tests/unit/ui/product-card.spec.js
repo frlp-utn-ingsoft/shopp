@@ -6,7 +6,6 @@ const utils = require('../../ui-utils.js');
 
 const {
     getByText,
-    queryByText,
     getByAltText,
     getByTestId,
     TestingLibraryElementError
