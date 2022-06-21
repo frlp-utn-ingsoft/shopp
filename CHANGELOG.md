@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2022-06-19
 ## Improved
 -   Relación de aspecto de imagen correcta
+-   Icono de carrito
+-   Corrección en IDs duplicados
+-   Corrección de la resolución de las imágenes
+-   Descripción de meta
+-   Corrección de contrastes entre textos y fondos
+-   Mejoras menores de performance
 
 ## [1.0.0] - 2022-05-26
 
