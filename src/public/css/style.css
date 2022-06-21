@@ -28,7 +28,7 @@ body {
 
 .footer-data-shopp{
     width: 100%;
-    background-color:#5397fd;
+    background-color:#bebebe;
 }
 
 .footer-data-shopp .container-body{
@@ -47,17 +47,17 @@ body {
 .footer-data-shopp .box1{
     font-family: 'Macondo', 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
 
 .footer-data-shopp .box2{
     font-family: 'Macondo', 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
 
 .footer-data-shopp .box3{
     font-family: 'Macondo', 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
