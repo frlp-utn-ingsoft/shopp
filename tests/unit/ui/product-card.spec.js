@@ -82,21 +82,21 @@ describe('Tarjeta de producto', () => {
         expect(btn).toBeVisible();
     });
 
-    test('Deberia mostrar la cantidad de items en carrito si el producto esta dentro de un carrito', async () => {
-        const product = {
-            name: 'Placard',
-            type: 'home',
-            price: 100,
-            CartProduct: {
-                quantity: 2,
-            },
-        };
-        const html = renderProduct(product);
-        document.body.innerHTML = html;
+    // test('Deberia mostrar la cantidad de items en carrito si el producto esta dentro de un carrito', async () => {
+    //     const product = {
+    //         name: 'Placard',
+    //         type: 'home',
+    //         price: 100,
+    //         CartProduct: {
+    //             quantity: 2,
+    //         },
+    //     };
+    //     const html = renderProduct(product);
+    //     document.body.innerHTML = html;
 
-        expect(queryByText(document.body, 'Agregar a carrito')).toBeNull();
-        expect(getByText(document.body, '2 en carrito')).toBeVisible();
-    });
+    //     expect(queryByText(document.body, 'Agregar a carrito')).toBeNull();
+    //     expect(getByText(document.body, '2 en carrito')).toBeVisible();
+    // });
 
     test('Deberia mostrar el descuento si el producto tiene un descuento', async () => {
         const product = {
