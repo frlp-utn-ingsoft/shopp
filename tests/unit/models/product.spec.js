@@ -365,4 +365,5 @@ test('Crear producto con su detalle', async () => {
     expect(product.type).toBe(productData.type);
     expect(product.name).toBe(productData.name);
     expect(product.detail).toBe(productData.detail);
+
 });
