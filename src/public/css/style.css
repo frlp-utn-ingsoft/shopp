@@ -13,6 +13,8 @@ body {
 
 .pagination {
     justify-content: center;
+    background-color: lightblue !important;
+    color: black !important;
 }
 
 .pagination .current {
