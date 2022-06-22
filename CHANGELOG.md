@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2022-06-22
+
+-   Modelos de Producto y Carrito
+-   Vistas de Home y Carrito
+-   Tests unitarios, de integración y e2e
+-   Metricas con lighthouse
+
 ## [1.0.0] - 2022-05-26
 
 ### Added
