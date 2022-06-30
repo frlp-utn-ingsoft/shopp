@@ -44,9 +44,24 @@ describe('Home Test', () => {
             .should('contain.text', '5 %');
     });
 
-    it('Debería existir el footer con la información de contacto de Shopp', () => {
+    it('Debería existir el footer', () => {
         cy.visit('/');
         cy.get('footer').should('be.visible');
+    });
+
+    it('Debería existir el número de teléfono en el footer', () => {
+        cy.visit('/');
+        cy.get('footer').should('contain.text', 'Teléfono: 111-222-333');
+    });
+
+    it('Debería existir la dirección en el footer', () => {
+        cy.visit('/');
+        cy.get('footer').should('contain.text', 'Dirección: Calle falsa 123');
+    });
+
+    it('Debería existir el email en el footer', () => {
+        cy.visit('/');
+        cy.get('footer').should('contain.text', 'Email: atencion@shopp.com');
     });
 
 });
