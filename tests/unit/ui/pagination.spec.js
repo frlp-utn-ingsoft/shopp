@@ -105,7 +105,7 @@ test('No se debería mostrar el botón "Anterior" en la primer página', async()
 test('No se debería mostrar el botón "Siguiente" en la ultima página', async() => {
     const pagination = {
         totalPages: 10,
-        currentPage: 2
+        currentPage: 10
     }
 
     const html = renderPagination(pagination);
