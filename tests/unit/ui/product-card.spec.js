@@ -128,4 +128,17 @@ describe('Tarjeta de producto', () => {
             getByTestId(document.body, 'discount');
         }).toThrowError(TestingLibraryElementError)
     });
+    test('Deberia tener el tipo de producto traducido al español', async () => {
+        const product = {
+            name: 'Placard',
+            type: 'home',
+            price: 50000,
+        };
+        const html = renderProduct(product);
+        document.body.innerHTML = html;
+
+        const btn = getByText(document.body, 'Hogar');
+        expect(btn).toBeVisible();
+
+    });
 });
