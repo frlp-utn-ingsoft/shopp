@@ -141,4 +141,18 @@ describe('Tarjeta de producto', () => {
         expect(btn).toBeVisible();
 
     });
+
+
+    test('Deberia tener la descripcion del producto', async () => {
+        const html = renderProduct({
+            name: 'Placard',
+            type: 'home',
+            price: 100,
+            description: 'ejemplo',
+        });
+        document.body.innerHTML = html;
+
+        expect(getByText(document.body, 'ejemplo')).toBeVisible();
+    });
+    
 });
