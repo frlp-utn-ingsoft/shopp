@@ -44,4 +44,12 @@ describe('Home Test', () => {
             .should('contain.text', '5 %');
     });
 
+    it('Debería contener el footer', () => {
+        cy.visit('/');
+        cy.get('footer').should(
+            'contain.text',
+            'shopp@gmail.com'
+        );
+    });
+
 });

@@ -41,7 +41,7 @@ describe('Tarjeta de producto', () => {
         });
         document.body.innerHTML = html;
 
-        expect(getByText(document.body, 'home')).toBeVisible();
+        expect(getByText(document.body, 'Hogar')).toBeVisible();
     });
 
     test('Deberia tener el precio del producto', async () => {
@@ -128,4 +128,31 @@ describe('Tarjeta de producto', () => {
             getByTestId(document.body, 'discount');
         }).toThrowError(TestingLibraryElementError)
     });
+    test('Deberia tener el tipo de producto traducido al español', async () => {
+        const product = {
+            name: 'Placard',
+            type: 'home',
+            price: 50000,
+        };
+        const html = renderProduct(product);
+        document.body.innerHTML = html;
+
+        const btn = getByText(document.body, 'Hogar');
+        expect(btn).toBeVisible();
+
+    });
+
+
+    test('Deberia tener la descripcion del producto', async () => {
+        const html = renderProduct({
+            name: 'Placard',
+            type: 'home',
+            price: 100,
+            description: 'ejemplo',
+        });
+        document.body.innerHTML = html;
+
+        expect(getByText(document.body, 'ejemplo')).toBeVisible();
+    });
+    
 });

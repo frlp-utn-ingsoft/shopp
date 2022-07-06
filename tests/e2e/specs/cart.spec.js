@@ -53,4 +53,22 @@ describe('Cart', () => {
         cy.get('.product:nth-child(2) [data-testid="discount"]')
             .should('have.text', '10 %')
     });
+
+    it('Deberia mostrar un mensaje si el carrito no contiene ningín Item', () => {
+        cy.visit('/cart');
+
+        cy.get('h2').should(
+            'contain.text',
+            'No posee productos en el carrito'
+        );
+    });
+
+    it('Debería contener el footer', () => {
+        cy.visit('/cart');
+        cy.get('footer').should(
+            'contain.text',
+            'shopp@gmail.com'
+        );
+    });
+
 });

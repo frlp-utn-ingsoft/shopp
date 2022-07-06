@@ -2,21 +2,30 @@
 <div class="product card">
     <div class="card-body d-flex flex-row">
         <img
+            srcset="https://via.placeholder.com/300 300w"
             src="https://via.placeholder.com/150"
             alt="foto de un {{ product.name }}"
-            width="150px"
+            width="150w"
+            height="150w"
             class="rounded"
             loading="async"
         />
         <div class="ms-3">
             <h5 class="card-title mb-0">{{ product.name }}</h5>
             <p class="card-text">
-                <small class="text-muted">{{ product.type }}</small>
+                <small class="text-muted black">
+                    {% if product.type == 'home' %}
+                        Hogar
+                    {% elif product.type == 'electronics'%}
+                        Electrónicos
+                    {% endif %}
+                </small>
             </p>
+            <p style="font-size: 1.25rem"> {{ product.description }}</p>
             <p class="fs-3">$ {{ product.price }}</p>
 
             {% if (product.discount > 0) %}
-                <p class="small" data-testid="discount">{{ product.discount }} %</p>
+                <p class="small black" data-testid="discount">{{ product.discount }} %</p>
             {% endif %}
         </div>
 
@@ -25,7 +34,7 @@
             {% if (not product.CartProduct ) %}
                 <form action="/cart" method="POST">
                     <input type="text" class="d-none" name="productid" value="{{ product.id }}">
-                    <button type="submit" class="btn btn-outline-primary">Agregar a carrito</button>
+                    <button type="submit" class="btn btn-outline-primary black">Agregar a carrito</button>
                 </form>
             {% else %}
                 <div class="product__quantity fs-4 bold">
