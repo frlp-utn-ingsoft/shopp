@@ -45,7 +45,7 @@ describe('Home Test', () => {
     });
 
     it('Debería contener el footer', () => {
-        cy.visit('/home');
+        cy.visit('/');
         cy.get('footer').should(
             'contain.text',
             'shopp@gmail.com'
