@@ -63,4 +63,12 @@ describe('Cart', () => {
         );
     });
 
+    it('Debería contener el footer', () => {
+        cy.visit('/cart');
+        cy.get('footer').should(
+            'contain.text',
+            'shopp@gmail.com'
+        );
+    });
+
 });
