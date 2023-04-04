@@ -4,11 +4,7 @@ Aplicación utilizada en la cursada 2022 de Ingenieria de Software. UTN-FRLP
 
 ## Dependencias
 
-<<<<<<< HEAD
 -   node > v21
-=======
--   node > v20
->>>>>>> 8847fbdad0b915d12e555831c8214c3bf7344355
 -   express > v4
 
 ## Instalar dependencias
